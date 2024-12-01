@@ -30,11 +30,12 @@ public class ItemUtil {
     }
 
     public static ItemStack addTag(ItemStack item, String tag, String content) {
-        return NBTEditor.set(item, content, tag);
+        return NBTEditor.set(item, content, NBTEditor.CUSTOM_DATA, tag);
     }
 
     public static Optional<String> getTag(ItemStack item, String tag) {
-        return NBTEditor.getString(item, tag);
+        String value = NBTEditor.getString(item, NBTEditor.CUSTOM_DATA, tag);
+        return Optional.ofNullable(value);
     }
 
     public static void addColor(DyeColor color, ItemStack... leatherArmors) {

@@ -24,7 +24,7 @@ public class MenuListener implements Listener {
     public void onClick(InventoryClickEvent e) {
         Optional<Menu> type = manager.getMenu(e.getInventory());
         if (!type.isPresent() || e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) return;
-
+        if (e.getClickedInventory() == e.getWhoClicked().getInventory()) return;
         e.setCancelled(true);
 
         Menu menu = type.get();
